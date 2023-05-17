@@ -83,7 +83,6 @@ export function App() {
     setSelectedLevel(level);
     setShowLevel(false);
   };
-  console.log("do we show level?:", showLevel);
   return (
     <>
       <ThemeToggle />

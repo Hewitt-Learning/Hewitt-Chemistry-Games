@@ -5,10 +5,15 @@
   justify-content: center;
   justify-items: center;
   gap: 1em;
+  padding: 2em;
 }
 
 .game-intro > * {
   margin: 0;
+}
+
+.game-intro > h1 {
+  text-align: center;
 }
 
 .game-intro p {
@@ -31,9 +36,6 @@
   font-family: inherit;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  align-content: center;
-  justify-content: center;
-  justify-items: center;
   gap: 1em;
   background-color: white;
   padding: 2em;
@@ -46,6 +48,17 @@
 
 .difficulty-chooser-text {
   grid-column: 1 / span 3;
+  justify-self: center;
   grid-row: 1;
   font-family: inherit;
+}
+
+@media screen and (max-width: 600px) {
+  .difficulty-chooser {
+    grid-template-columns: 1fr;
+  }
+
+  .difficulty-chooser-text {
+    grid-column: 1;
+  }
 }
