@@ -14,6 +14,24 @@ export enum ElementClassification {
    * The element classification is a metalloid (between metals and nonmetals, towards the right-hand side of the periodic table).
    */
   Metalloid,
+
+  AlkaliMetal,
+  // /**
+  // The element classification for alkalimetal
+
+  // **/
+
+  AlkalineEarthMetal, /**alkaine earth metal */
+
+  Actinide, /** actinide */
+
+  Unknown, /**Unknown chemical compounds  */
+
+  PolyatomicNonMetal, /**Poly Atmomic Non Metals */
+
+  DiatomicNonMetal, /** Diatomic non metal element classification  */
+
+  NobleGas, /**element classification for noble gas */
 }
 
 /**
@@ -43,6 +61,7 @@ export const periodicTable: (PeriodicTableElement | null)[][] = [
       atomicMass: 1.01,
       classification: ElementClassification.Nonmetal,
     },
+    // null,
     null,
     null,
     null,
@@ -83,6 +102,7 @@ export const periodicTable: (PeriodicTableElement | null)[][] = [
       atomicMass: 9.01,
       classification: ElementClassification.Metal,
     },
+    // null,
     null,
     null,
     null,
@@ -122,7 +142,7 @@ export const periodicTable: (PeriodicTableElement | null)[][] = [
       classification: ElementClassification.Nonmetal,
     },
     {
-      name: "Flourine",
+      name: "Fluorine",
       atomicNumber: 9,
       symbol: "F",
       atomicMass: 19.0,
@@ -152,6 +172,7 @@ export const periodicTable: (PeriodicTableElement | null)[][] = [
       atomicMass: 24.31,
       classification: ElementClassification.Metal,
     },
+    // null,
     null,
     null,
     null,
@@ -221,6 +242,7 @@ export const periodicTable: (PeriodicTableElement | null)[][] = [
       atomicMass: 40.08,
       classification: ElementClassification.Metal,
     },
+    // null,
     {
       name: "Scandium",
       atomicNumber: 21,
@@ -350,6 +372,7 @@ export const periodicTable: (PeriodicTableElement | null)[][] = [
       atomicMass: 87.62,
       classification: ElementClassification.Metal,
     },
+    // null,
     {
       name: "Yttrium",
       atomicNumber: 39,
@@ -479,6 +502,13 @@ export const periodicTable: (PeriodicTableElement | null)[][] = [
       atomicMass: 137.33,
       classification: ElementClassification.Metal,
     },
+    /* {
+      name: "57-70",
+      atomicNumber: null,
+      symbol: "*",
+      atomicMass: null,
+      classification: ElementClassification.Metal,
+    }, */
     {
       name: "Lutetium",
       atomicNumber: 71,
@@ -608,6 +638,13 @@ export const periodicTable: (PeriodicTableElement | null)[][] = [
       atomicMass: 226.03,
       classification: ElementClassification.Metal,
     },
+    /* {
+      name: "89-102",
+      atomicNumber: null,
+      symbol: "**",
+      atomicMass: null,
+      classification: ElementClassification.Metal,
+    }, */
     {
       name: "Lawrencium",
       atomicNumber: 103,
@@ -721,4 +758,217 @@ export const periodicTable: (PeriodicTableElement | null)[][] = [
       classification: ElementClassification.Nonmetal,
     },
   ], //end row 7
+/*   [
+    //row 8
+    null,
+    null,
+    {
+      name: "Lanthanum",
+      atomicNumber: 57,
+      symbol: "La",
+      atomicMass: 138.91,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Cerium",
+      atomicNumber: 58,
+      symbol: "Ce",
+      atomicMass: 140.12,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Praseodymium",
+      atomicNumber: 59,
+      symbol: "Pr",
+      atomicMass: 140.91,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Neodymium",
+      atomicNumber: 60,
+      symbol: "Nd",
+      atomicMass: 144.24,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Promethium",
+      atomicNumber: 61,
+      symbol: "Pm",
+      atomicMass: 145,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Samarium",
+      atomicNumber: 62,
+      symbol: "Sm",
+      atomicMass: 150.36,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Europium",
+      atomicNumber: 63,
+      symbol: "Eu",
+      atomicMass: 151.96,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Gadolinium",
+      atomicNumber: 64,
+      symbol: "Gd",
+      atomicMass: 157.25,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Terbium",
+      atomicNumber: 65,
+      symbol: "Tb",
+      atomicMass: 158.93,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Dysprosium",
+      atomicNumber: 66,
+      symbol: "Dy",
+      atomicMass: 162.5,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Holmium",
+      atomicNumber: 67,
+      symbol: "Ho",
+      atomicMass: 164.93,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Erbium",
+      atomicNumber: 68,
+      symbol: "Er",
+      atomicMass: 167.26,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Thulium",
+      atomicNumber: 69,
+      symbol: "Tm",
+      atomicMass: 168.93,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Ytterbium",
+      atomicNumber: 70,
+      symbol: "Yb",
+      atomicMass: 173.04,
+      classification: ElementClassification.Metal,
+    },
+    null,
+    null,
+    null,
+  ], //end row 8
+  [
+    //row 9
+    null,
+    null,
+    {
+      name: "Actinium",
+      atomicNumber: 89,
+      symbol: "Ac",
+      atomicMass: 227,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Thorium",
+      atomicNumber: 90,
+      symbol: "Th",
+      atomicMass: 232.04,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Protactinium",
+      atomicNumber: 91,
+      symbol: "Pa",
+      atomicMass: 231.04,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Uranium",
+      atomicNumber: 92,
+      symbol: "U",
+      atomicMass: 238.03,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Neptunium",
+      atomicNumber: 93,
+      symbol: "Np",
+      atomicMass: 237.05,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Plutonium",
+      atomicNumber: 94,
+      symbol: "Pu",
+      atomicMass: 244,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Americium",
+      atomicNumber: 95,
+      symbol: "Am",
+      atomicMass: 243,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Curium",
+      atomicNumber: 96,
+      symbol: "Cm",
+      atomicMass: 247,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Berkelium",
+      atomicNumber: 97,
+      symbol: "Bk",
+      atomicMass: 247,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Californium",
+      atomicNumber: 98,
+      symbol: "Cf",
+      atomicMass: 251,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Einsteinium",
+      atomicNumber: 99,
+      symbol: "Es",
+      atomicMass: 252,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Fermium",
+      atomicNumber: 100,
+      symbol: "Fm",
+      atomicMass: 257,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Mendelevium",
+      atomicNumber: 101,
+      symbol: "Md",
+      atomicMass: 258,
+      classification: ElementClassification.Metal,
+    },
+    {
+      name: "Nobelium",
+      atomicNumber: 102,
+      symbol: "No",
+      atomicMass: 259,
+      classification: ElementClassification.Metal,
+    },
+    null,
+    null,
+    null,
+  ], //end row 9 */
 ];
+

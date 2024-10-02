@@ -1,3 +1,7 @@
+.select {
+  margin:10px
+}
+
 .game-intro {
   display: grid;
   height: 100vh;
@@ -6,6 +10,23 @@
   justify-items: center;
   gap: 1em;
   padding: 2em;
+  position: relative;
+  justify-items: center;
+}
+
+.game-intro::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/thumbnail_Aluminum.png"), 
+                    url("/images/thumbnail_Zinc.png");
+  background-size: 400px 400px, 400px 400px;
+  background-repeat: no-repeat, no-repeat;
+  z-index: -1;
+  background-position: 87% 40%, 10% 35%;
 }
 
 .game-intro > * {
@@ -17,6 +38,45 @@
 }
 
 .game-intro p {
+  max-width: 25em;
+}
+
+.game-intro-comp {
+  display: grid;
+  height: 100vh;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  gap: 1em;
+  padding: 2em;
+  position: relative;
+  justify-items: center;
+}
+
+.game-intro-comp::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/thumbnail_Neon.png"),
+                    url("/images/thumbnail_Hydrogen.png");
+  background-size: 400px 400px, 400px 400px;
+  background-repeat: no-repeat, no-repeat;
+  z-index: -1;
+  background-position: 92% 40%, 10% 35%;
+}
+
+.game-intro-comp > * {
+  margin: 0;
+}
+
+.game-intro-comp > h1 {
+  text-align: center;
+}
+
+.game-intro-comp p {
   max-width: 25em;
 }
 
@@ -61,4 +121,36 @@
   .difficulty-chooser-text {
     grid-column: 1;
   }
+}
+.character-chooser-wrapper {
+  font-family: Soliloquous, sans-serif;
+  display: grid;
+  position: fixed;
+  align-content: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.character-chooser {
+  font-family: inherit;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1em;
+  background-color: white;
+  padding: 2em;
+  border-radius: 0.5em;
+  box-shadow: 9px 3px 20px 5px #00000054;
+}
+.theme-dark .character-chooser {
+  background-color: #3f3f3f;
+}
+
+.character-chooser-text {
+  grid-column: 1 / span 3;
+  justify-self: center;
+  grid-row: 1;
+  font-family: inherit;
 }

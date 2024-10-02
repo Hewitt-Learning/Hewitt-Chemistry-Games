@@ -165,7 +165,7 @@ test('Places word "fill" on grid', () => {
     '"Could not fit word into table"',
   );
   expect(() => placeWord("12")).toThrowErrorMatchingInlineSnapshot(
-    '"1 is not defined in the letter map"',
+    '[Error: 1 is not defined in the letter map]',
   );
   expect(displayPlacement(placeWord("wow!"))).toMatchInlineSnapshot(`
     "

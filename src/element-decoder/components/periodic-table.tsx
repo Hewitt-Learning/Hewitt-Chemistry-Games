@@ -1,23 +1,28 @@
 import { periodicTable } from "../periodic-table-data";
-import { PeriodicTableElement } from "./periodic-table-element";
+import { compoundQuestions } from "../../compound-decoder/compound-data";
+import { PeriodicTableElement, CompoundTableElement } from "./periodic-table-element";
 import "./periodic-table.css";
 import { useGameState, GamePhase } from "../game-state";
 import { InfoBox } from "./periodic-table-info-box";
+import { Character } from "../app";
 import clsx from "clsx";
 
 const playIncorrectSound = () => {
-  const audio = new Audio("/audio/boowomp.mp3");
-  audio.playbackRate = 1.25;
+  const audio = new Audio("/audio/wrong.mp3");
+  audio.playbackRate = 1.5;
+  audio.volume = 2/100;
   audio.play();
 };
 
 const playCorrectSound = () => {
-  const audio = new Audio("/audio/KH3v2.wav");
-  audio.playbackRate = 1.5;
+  const audio = new Audio("/audio/Click_sound.wav");
+  audio.playbackRate = 1.25;
+  audio.volume = 5/100;
   audio.play();
 };
 
 /** The possible states for each displayed element during the game */
+
 export enum ElementState {
   /** Elements of the current word that have been found */
   FoundElement,
@@ -25,12 +30,15 @@ export enum ElementState {
   NotClicked,
   /** Elements that were clicked incorrectly (gets reset after a the correct element is found) */
   WrongElementClicked,
+
+  Compound,  
 }
 
 export enum Level {
   Beginner,
   Intermediate,
   Advanced,
+  Compound, 
 }
 
 interface Props {
@@ -38,12 +46,13 @@ interface Props {
   level: Level;
   setSelectedLevel: (level: Level | null) => void;
   setShowLevel: (showLevel: boolean) => void;
+  selectedCharacter: Character;
 }
-
 export const PeriodicTable = ({
   level,
   setSelectedLevel,
   setShowLevel,
+  selectedCharacter,
 }: Props) => {
   const gameState = useGameState(level);
 
@@ -68,6 +77,7 @@ export const PeriodicTable = ({
           setSelectedLevel={setSelectedLevel}
           setShowLevel={setShowLevel}
           feedback={gameState.feedback}
+          selectedCharacter={selectedCharacter}
         />
         {/* end of THE BOX */}
 
@@ -88,8 +98,8 @@ export const PeriodicTable = ({
             return (
               // Start with the case 1: The user has not completed the word
               <PeriodicTableElement
-                style={{ gridColumn: `${colIndex + 1} / span 1` }}
-                element={element}
+                style={{ gridColumn: `${colIndex + 1} / span 1`, borderRadius: 10}}
+                element={element} 
                 onClick={() => {
                   // If it was already found, or already clicked but was wrong, ignore the click
                   if (
@@ -97,6 +107,8 @@ export const PeriodicTable = ({
                       ElementState.FoundElement ||
                     gameState.elementStates[rowIndex][colIndex] ===
                       ElementState.WrongElementClicked ||
+                    gameState.elementStates[rowIndex][colIndex] ===
+                      ElementState.Compound ||
                     gameState.gamePhase === GamePhase.CompletedWord
                   )
                     return;

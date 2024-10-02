@@ -7,3 +7,12 @@ export function addSpace(word: string): string {
     })
     .join("");
 }
+
+export function addSpaces(): string{
+  return ""
+  .split("")
+    .map((letter) => {
+      return letter + "\u200a";
+    })
+    .join("");
+}

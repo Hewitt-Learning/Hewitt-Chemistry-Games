@@ -39,7 +39,7 @@ pnpm test
 
 This project is a static site, where all of the interactive behavior is implemented client-side. The UI framework is [Preact](https://preactjs.com/tutorial/) (if you are familiar with [React](https://reactjs.org/), all applicable knowledge will carry over). We are using [TypeScript](https://www.typescriptlang.org/) for type safety.
 
-All the source code lives in the `src` folder. Since we have worked on both Element Decoder and Ionic Tetris, the projects are in separate directories: `src/element-decoder` and `src/ionic-tetris`. 
+All the source code lives in the `src` folder. Since we have worked on Element Decoder, Ionic Tetris, and Compound Decoder the projects are in separate directories: `src/element-decoder`, `src/ionic-tetris`, and `src/compound-decoder`. 
 
 In the top-level `src` directory, `theme.tsx` is an important file which, along with `theme-toggle.css`, dictates the theme of both of the games by integrating the current system's dark or light mode setting when set to "auto", or helps toggle between dark and light mode.
 
@@ -142,3 +142,11 @@ What is currently in place is a bare-bones setup of the Ionic Tetris game. Basic
 - `components/`: contains all the required components for this game, including components for the individual buckets and ions.
 - `components/bucket.tsx`: details the bucket components and how they are displayed. A bucket is a group of two to five columns where an ionic compound can be formed.
 - `components/ion.tsx`: gives details on how the ions on the gameboard are displayed, particularly based on their charge and their symbol.
+
+### Compound Decoder
+
+This is the third 'game' that is being made for the website. This is essentially a feature update to the element decoder to handle the additional complexity of asking the users to identify the elements used in specific compounds.
+
+Current additional files are as follows:
+
+`compound-data.ts`: data file that contains the raw compound data that will be used for questions.

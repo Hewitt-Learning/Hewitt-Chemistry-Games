@@ -1,6 +1,6 @@
-import { periodicTable } from "../periodic-table-data";
-import { letterMapNormalized } from "./letter-definitions";
-//import { letterMapNormalizedCompounds } from "../../compound-decoder/letters-basic-compounds";
+import { periodicTable } from "../element-decoder/periodic-table-data";
+//import { letterMapNormalized } from "./letter-definitions"; Original Letter Defintions
+import { letterMapNormalizedCompounds } from "./letters-basic-compounds";
 
 /** enum to make it more clear in our code what the status of the game board is */
 export enum SpaceDef {
@@ -17,7 +17,7 @@ export enum SpaceDef {
  * @param word A word in the form of a string, generally around 4-5 characters long (to fit on the table)
  * @returns outputs - returns a grid of the word placed on the periodic table, or returns false if the word cannot be placed
  */
-export const placeWord = (word: string): SpaceDef[][] | false => {
+export const placeWordCompound = (word: string): SpaceDef[][] | false => {
   const wordUppercase = word.toUpperCase();
 
   /**
@@ -36,16 +36,17 @@ export const placeWord = (word: string): SpaceDef[][] | false => {
 
   /** the column index will never decrease, so it is declared here to be used in a while loop */
   let colIndex = 0;
+  let letterNum = 0;
 
   // loop through and set letter in table
   wordLoop: for (const letter of wordUppercase) {
-    const letterDefinition = letterMapNormalized[letter];
-    //const letterDefinition = letterMapNormalizedCompounds[letter];
+    //const letterDefinition = letterMapNormalized[letter]; Original Letter Sizing
+    const letterDefinition = letterMapNormalizedCompounds[letter];
     if (letterDefinition === undefined) {
       //error check
       throw new Error(`${letter} is not defined in the letter map`);
     }
-
+    letterNum++;
     /** finds width of the letter, for checking bounds on the periodic table later*/
     const letterMaxWidth = letterDefinition.reduce((max, row) => {
       if (row.length > max) {
@@ -128,8 +129,28 @@ export const placeWord = (word: string): SpaceDef[][] | false => {
 
         // we have completed a letter, continue placing the word
         colIndex += letterMaxWidth + 1;
+
+        //The idea here is to adjust the algorithm to allow for the last letter to be placed where compounds are made.
+        //This has to be done before the last letter is placed, IE at word.lenghth -1.
+        // This also however has to take into account the amount of space required by the last letter in the word, to make sure there is enought room to place it.
+        
+        if(letterNum === wordUppercase.length-1){
+          console.log(`Letter Num: ${letterNum} Col Index: ${colIndex} Letter Max Width: ${letterMaxWidth} Initial Table Length: ${initialTable[0].length} Letter Count: ${wordUppercase.length}`);
+            const lastLetterDefinition = letterMapNormalizedCompounds[(wordUppercase.at(wordUppercase.length - 1) as string)];
+            const lastLetterWidth = lastLetterDefinition.reduce((max, row) => {
+              if (row.length > max) {
+                return row.length;
+              } else {
+                return max;
+              }
+            }, 0);
+          console.log(`Last Letter Width: ${lastLetterWidth}`)
+          colIndex += initialTable[0].length - colIndex - lastLetterWidth - 1; 
+        }
+
         continue wordLoop;
       }
+      
       colIndex++;
     }
 
@@ -140,3 +161,22 @@ export const placeWord = (word: string): SpaceDef[][] | false => {
 
   return initialTable;
 };
+
+/*
+letterNum++;
+        if(letterNum === wordUppercase.length-1){
+          if(colIndex < initialTable[0].length){ //if second to last letter fits (might not be necessary but could avoid some weird overwriting issues.)
+            const lastLetterDefinition = letterMapNormalizedCompounds[wordUppercase.at(wordUppercase.length-1)];
+            const lastLetterWidth = lastLetterDefinition.reduce((max, row) => {
+              if (row.length > max) {
+                return row.length;
+              } else {
+                return max;
+              }
+            }, 0);
+            if((colIndex + lastLetterWidth) <= initialTable[0].length){ //if last letter can fit on table
+              colIndex = initialTable[0].length - lastLetterWidth + 1; //place it as far to the right as width allows.
+            }
+          }
+        }
+*/

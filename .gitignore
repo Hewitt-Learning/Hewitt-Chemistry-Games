@@ -24,3 +24,11 @@ dist-ssr
 *.sw?
 
 ts-dist/
+/.vs/Hewitt-Chemistry-Games-Compound-Decoder/config/applicationhost.config
+/.vs/Hewitt-Chemistry-Games-Compound-Decoder/FileContentIndex/ae1210f2-efd2-4cf8-8861-cbf112a431e8.vsidx
+/.vs/Hewitt-Chemistry-Games-Compound-Decoder/FileContentIndex/6078f701-6b64-4471-bb00-7a1ad35af861.vsidx
+/.vs/Hewitt-Chemistry-Games-Compound-Decoder/FileContentIndex
+/.vs/Hewitt-Chemistry-Games-Compound-Decoder/v17/.wsuo
+/.vs/Hewitt-Chemistry-Games-Compound-Decoder/v17/DocumentLayout.json
+/.vs/ProjectSettings.json
+/.vs
